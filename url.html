@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Virtual Uniasselvi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --amarelo: #D4FF00;
+      --preto: #0a0a0a;
+      --branco: #ffffff;
+      --amarelo-hover: #bcdf00;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--preto);
+      color: var(--branco);
+      font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      padding: 2.5rem 0 1.5rem;
+    }
+
+    .logo-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+    }
+
+    .logo-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 18px;
+      background: var(--amarelo);
+      opacity: 0.15;
+      filter: blur(16px);
+    }
+
+    .logo-wrapper img {
+      width: 200px;
+      max-width: 60vw;
+      border-radius: 14px;
+      border: 2px solid rgba(212, 255, 0, 0.3);
+      position: relative;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 7vw, 40px);
+      letter-spacing: 1px;
+      color: var(--branco);
+      line-height: 1.1;
+    }
+
+    h1 span {
+      color: var(--amarelo);
+    }
+
+    .subtitulo {
+      margin-top: 8px;
+      font-size: clamp(13px, 3.5vw, 15px);
+      color: rgba(255, 255, 255, 0.45);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── DIVISOR ── */
+    .divisor {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--amarelo), transparent);
+      margin: 0.5rem 0 1.5rem;
+      opacity: 0.35;
+    }
+
+    /* ── DESCRIÇÃO ── */
+    .descricao {
+      background: rgba(212, 255, 0, 0.04);
+      border: 1px solid rgba(212, 255, 0, 0.12);
+      border-radius: 14px;
+      padding: 1.1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: clamp(13px, 3.5vw, 14px);
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.75;
+    }
+
+    .descricao ol {
+      padding-left: 1.1rem;
+    }
+
+    .descricao li {
+      margin-bottom: 0.5rem;
+    }
+
+    .descricao li:last-child {
+      margin-bottom: 0;
+    }
+
+    .descricao strong {
+      color: var(--amarelo);
+      font-weight: 600;
+    }
+
+    /* ── LABEL ── */
+    .secao-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.28);
+      margin-bottom: 0.75rem;
+      padding-left: 2px;
+    }
+
+    /* ── BOTÕES ── */
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: var(--amarelo);
+      color: var(--preto);
+      text-decoration: none;
+      border-radius: 10px;
+      font-family: 'Barlow', sans-serif;
+      font-size: clamp(15px, 4vw, 17px);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 4px 16px rgba(212, 255, 0, 0.12);
+    }
+
+    .link-btn:hover {
+      background: var(--amarelo-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212, 255, 0, 0.28);
+    }
+
+    .link-btn:active {
+      transform: translateY(0);
+    }
+
+    .link-btn .icone {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .link-btn .texto {
+      flex: 1;
+    }
+
+    .link-btn .seta {
+      font-size: 0.9rem;
+      opacity: 0.45;
+      font-style: normal;
+    }
+
+    /* ── RODAPÉ ── */
+    .rodape {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.18);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── ANIMAÇÕES ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .header        { animation: fadeUp 0.5s ease both; }
+    .divisor       { animation: fadeUp 0.4s ease 0.12s both; }
+    .descricao     { animation: fadeUp 0.4s ease 0.22s both; }
+    .secao-label   { animation: fadeUp 0.4s ease 0.28s both; }
+    .link-btn:nth-child(1) { animation: fadeUp 0.4s ease 0.33s both; }
+    .link-btn:nth-child(2) { animation: fadeUp 0.4s ease 0.40s both; }
+    .link-btn:nth-child(3) { animation: fadeUp 0.4s ease 0.47s both; }
+    .link-btn:nth-child(4) { animation: fadeUp 0.4s ease 0.54s both; }
+    .link-btn:nth-child(5) { animation: fadeUp 0.4s ease 0.61s both; }
+    .link-btn:nth-child(6) { animation: fadeUp 0.4s ease 0.68s both; }
+    .rodape        { animation: fadeUp 0.4s ease 0.75s both; }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-wrapper">
+      <img src="https://cdn.testonoticias.com.br/wp-content/uploads/arquivos/2019/08/15647740100240.jpg"
+        alt="Logo Uniasselvi" onerror="this.style.display='none'">
+    </div>
+    <h1>Biblioteca Virtual<br><span>Uniasselvi (AVA)</span></h1>
+    <p class="subtitulo">Centro Universitário Leonardo da Vinci</p>
+  </div>
+
+  <div class="divisor"></div>
+
+  <!-- DESCRIÇÃO -->
+  <div class="descricao">
+    <ol>
+      <li><strong>Apple e Google Play:</strong> Disponível para iOS e Android, oferece acesso a um aplicativo de leitura de livros digitais com tutoriais para uso.</li>
+      <li><strong>Biblioteca Virtual Uniasselvi:</strong> Acesso exclusivo para alunos, com uma vasta coleção de materiais acadêmicos e literários.</li>
+      <li><strong>Notebook LM:</strong> Plataforma de assistente de estudo que permite criar resumos e perguntas sobre o conteúdo lido.</li>
+      <li><strong>APP e guia do estudante:</strong> Assista os vídeos e o guia do estudante para obter informações adicionais.</li>
+    </ol>
+  </div>
+
+  <!-- LINKS -->
+  <p class="secao-label">Acesse agora</p>
+
+  <div class="btn-container">
+    <a href="https://apps.apple.com" target="_blank" class="link-btn">
+      <span class="icone">🍎</span>
+      <span class="texto">Apple</span>
+      <span class="seta">↗</span>
+    </a>
+
+    <a href="https://play.google.com/store/apps/details" target="_blank" class="link-btn">
+      <span class="icone">▶️</span>
+      <span class="texto">Play Store</span>
+      <span class="seta">↗</span>
+    </a>
+
+    <a href="https://bibliotecavirtual.uniasselvi.com.br/" target="_blank" class="link-btn">
+      <span class="icone">📚</span>
+      <span class="texto">Biblioteca Virtual</span>
+      <span class="seta">↗</span>
+    </a>
+
+    <a href="https://notebooklm.google/" target="_blank" class="link-btn">
+      <span class="icone">📝</span>
+      <span class="texto">Notebook LM</span>
+      <span class="seta">↗</span>
+    </a>
+
+    <a href="https://youtube.com/@professorwillimateus?si=-TWPbYRJBL9ACo19" target="_blank" class="link-btn">
+      <span class="icone">🎥</span>
+      <span class="texto">Como usar o Leo APP</span>
+      <span class="seta">↗</span>
+    </a>
+
+    <a href="https://conteudos.uniasselvi.com.br/ead_uniasselvi/files/Guia%20do%20Estudante%20Grad%20EAD%20-%202025.pdf"
+      target="_blank" class="link-btn">
+      <span class="icone">📄</span>
+      <span class="texto">Guia do Estudante</span>
+      <span class="seta">↗</span>
+    </a>
+  </div>
+
+  <p class="rodape">© 2025 Uniasselvi · Todos os direitos reservados</p>
+
+</body>
+</html>
